@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 30% 98%; /* Softer Light Gray */
+    --foreground: 220 25% 20%; /* Darker Slate for better contrast */
+    --card: 220 30% 98%;
+    --card-foreground: 220 25% 20%;
+    --popover: 220 30% 98%;
+    --popover-foreground: 220 25% 20%;
+    --primary: 205 75% 45%; /* Slightly brighter Unismuh Blue */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 20% 92%; /* Lighter Gray for secondary elements */
+    --secondary-foreground: 205 75% 45%;
+    --muted: 220 15% 88%; /* Muted Gray for less emphasis */
+    --muted-foreground: 220 20% 45%;
+    --accent: 45 100% 52%; /* Slightly adjusted Unismuh Yellow */
+    --accent-foreground: 220 25% 15%;
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 20% 85%; /* Softer Gray Border */
+    --input: 220 25% 95%; /* Lighter Gray Input */
+    --ring: 205 75% 58%; /* Brighter Unismuh Blue for ring */
+    --radius: 0.85rem; /* Slightly larger radius for softer corners */
+
+    --unismuh-blue: #005cb9; /* Adjusted Unismuh Blue */
+    --unismuh-blue-dark: #004c99;
+    --unismuh-yellow: #ffde59; /* Adjusted Unismuh Yellow */
+    --unismuh-white: #ffffff;
+    --unismuh-black: #1a1a1a;
+  }
+
+  .dark {
+    --background: 220 25% 8%; /* Darker Slate */
+    --foreground: 220 20% 92%; /* Lighter Gray Text */
+    --card: 220 25% 12%;
+    --card-foreground: 220 20% 92%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 220 20% 92%;
+    --primary: 205 70% 55%;
+    --primary-foreground: 220 25% 8%;
+    --secondary: 220 20% 22%;
+    --secondary-foreground: 220 20% 92%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 20% 60%;
+    --accent: 45 100% 58%;
+    --accent-foreground: 220 25% 8%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 220 20% 92%;
+    --border: 220 20% 28%;
+    --input: 220 20% 22%;
+    --ring: 205 70% 65%;
+
+    --unismuh-blue: #0066cc;
+    --unismuh-blue-dark: #004c99;
+    --unismuh-yellow: #ffdd44;
+    --unismuh-white: #121826;
+    --unismuh-black: #f0f4f8;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter var", "Inter", system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+      "Open Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden; /* Prevents body scroll with full-height app */
+  }
+}
+
+/* General App Container Styling */
+.app-container {
+  background-image: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) - 2%)
+      )
+      25%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) - 5%)
+      )
+      50%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) - 2%)
+      )
+      75%,
+    var(--background) 100%
+  );
+}
+
+.dark .app-container {
+  background-image: linear-gradient(
+    135deg,
+    var(--background) 0%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) + 2%)
+      )
+      25%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) + 5%)
+      )
+      50%,
+    hsl(
+        var(--background-h),
+        var(--background-s),
+        calc(var(--background-l) + 2%)
+      )
+      75%,
+    var(--background) 100%
+  );
+}
+
+.message-input:focus-within {
+  @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+}
+
+.send-button {
+  @apply transition-all duration-200 ease-out;
+}
+.send-button:hover:not(:disabled) {
+  @apply scale-105 shadow-lg;
+}
+.send-button:active:not(:disabled) {
+  @apply scale-95 shadow-inner;
+}
+
+.topic-chip {
+  @apply transition-all duration-200 ease-out;
+}
+.topic-chip:hover {
+  @apply shadow-lg transform -translate-y-0.5 bg-accent/20 dark:bg-accent/30;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted/40 rounded-full border-2 border-transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted/70;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-muted/30;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted/60;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(
+      var(--muted-h),
+      var(--muted-s),
+      calc(var(--muted-l) + 10%)
+    )
+    transparent;
+}
+
+.dark * {
+  scrollbar-color: hsl(
+      var(--muted-h),
+      var(--muted-s),
+      calc(var(--muted-l) - 10%)
+    )
+    transparent;
+}
