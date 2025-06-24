@@ -4,60 +4,48 @@
 
 @layer base {
   :root {
-    --background: 220 30% 98%; /* Softer Light Gray */
-    --foreground: 220 25% 20%; /* Darker Slate for better contrast */
-    --card: 220 30% 98%;
-    --card-foreground: 220 25% 20%;
-    --popover: 220 30% 98%;
-    --popover-foreground: 220 25% 20%;
-    --primary: 205 75% 45%; /* Slightly brighter Unismuh Blue */
+    --background: 220 40% 97%;
+    --foreground: 222 25% 15%;
+    --card: 220 30% 99%;
+    --card-foreground: 222 25% 15%;
+    --popover: 220 30% 99%;
+    --popover-foreground: 222 25% 15%;
+    --primary: 210 90% 58%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 20% 92%; /* Lighter Gray for secondary elements */
-    --secondary-foreground: 205 75% 45%;
-    --muted: 220 15% 88%; /* Muted Gray for less emphasis */
-    --muted-foreground: 220 20% 45%;
-    --accent: 45 100% 52%; /* Slightly adjusted Unismuh Yellow */
-    --accent-foreground: 220 25% 15%;
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 220 20% 85%; /* Softer Gray Border */
-    --input: 220 25% 95%; /* Lighter Gray Input */
-    --ring: 205 75% 58%; /* Brighter Unismuh Blue for ring */
-    --radius: 0.85rem; /* Slightly larger radius for softer corners */
-
-    --unismuh-blue: #005cb9; /* Adjusted Unismuh Blue */
-    --unismuh-blue-dark: #004c99;
-    --unismuh-yellow: #ffde59; /* Adjusted Unismuh Yellow */
-    --unismuh-white: #ffffff;
-    --unismuh-black: #1a1a1a;
+    --secondary: 220 25% 94%;
+    --secondary-foreground: 222 25% 25%;
+    --muted: 220 20% 88%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 45 100% 55%;
+    --accent-foreground: 222 25% 10%;
+    --destructive: 0 75% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 20% 85%;
+    --input: 220 20% 96%;
+    --ring: 210 90% 65%;
+    --radius: 0.85rem;
   }
 
   .dark {
-    --background: 220 25% 8%; /* Darker Slate */
-    --foreground: 220 20% 92%; /* Lighter Gray Text */
-    --card: 220 25% 12%;
-    --card-foreground: 220 20% 92%;
-    --popover: 220 25% 12%;
-    --popover-foreground: 220 20% 92%;
-    --primary: 205 70% 55%;
-    --primary-foreground: 220 25% 8%;
-    --secondary: 220 20% 22%;
-    --secondary-foreground: 220 20% 92%;
-    --muted: 220 20% 18%;
-    --muted-foreground: 220 20% 60%;
-    --accent: 45 100% 58%;
-    --accent-foreground: 220 25% 8%;
-    --destructive: 0 65% 50%;
-    --destructive-foreground: 220 20% 92%;
-    --border: 220 20% 28%;
-    --input: 220 20% 22%;
-    --ring: 205 70% 65%;
-
-    --unismuh-blue: #0066cc;
-    --unismuh-blue-dark: #004c99;
-    --unismuh-yellow: #ffdd44;
-    --unismuh-white: #121826;
-    --unismuh-black: #f0f4f8;
+    --background: 222 40% 8%;
+    --foreground: 220 25% 92%;
+    --card: 222 30% 12%;
+    --card-foreground: 220 25% 92%;
+    --popover: 222 30% 12%;
+    --popover-foreground: 220 25% 92%;
+    --primary: 210 95% 70%;
+    --primary-foreground: 222 40% 10%;
+    --secondary: 222 25% 19%;
+    --secondary-foreground: 220 25% 92%;
+    --muted: 222 20% 16%;
+    --muted-foreground: 220 20% 65%;
+    --accent: 45 100% 65%;
+    --accent-foreground: 222 40% 8%;
+    --destructive: 0 70% 60%;
+    --destructive-foreground: 220 25% 92%;
+    --border: 222 20% 22%;
+    --input: 222 25% 17%;
+    --ring: 210 95% 75%;
   }
 }
 
@@ -68,131 +56,127 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter var", "Inter", system-ui, -apple-system,
-      BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-      "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "Inter var", "Inter", system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s ease;
   }
   html,
   body,
   #root {
     height: 100%;
-    overflow: hidden; /* Prevents body scroll with full-height app */
+    overflow: hidden;
   }
 }
 
-/* General App Container Styling */
-.app-container {
-  background-image: linear-gradient(
-    135deg,
-    var(--background) 0%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) - 2%)
-      )
-      25%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) - 5%)
-      )
-      50%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) - 2%)
-      )
-      75%,
-    var(--background) 100%
+@keyframes move-aurora {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.2);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1.2);
+  }
+}
+
+.aurora-background {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.aurora-background::before,
+.aurora-background::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: 120vmax;
+  height: 120vmax;
+  border-radius: 50%;
+  animation: move-aurora 25s infinite linear;
+  will-change: transform;
+}
+
+.aurora-background::before {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--primary) / 0.3),
+    transparent 60%
+  );
+  animation-duration: 20s;
+}
+
+.aurora-background::after {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--accent) / 0.2),
+    transparent 70%
+  );
+  animation-duration: 30s;
+  animation-delay: -5s;
+}
+
+.dark .aurora-background::before {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--primary) / 0.15),
+    transparent 60%
+  );
+}
+.dark .aurora-background::after {
+  background-image: radial-gradient(
+    circle,
+    hsl(var(--accent) / 0.1),
+    transparent 70%
   );
 }
 
-.dark .app-container {
+.animated-gradient-text {
   background-image: linear-gradient(
-    135deg,
-    var(--background) 0%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) + 2%)
-      )
-      25%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) + 5%)
-      )
-      50%,
-    hsl(
-        var(--background-h),
-        var(--background-s),
-        calc(var(--background-l) + 2%)
-      )
-      75%,
-    var(--background) 100%
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--accent)),
+    hsl(var(--primary))
   );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: move-gradient 4s linear infinite;
 }
 
-.message-input:focus-within {
-  @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+@keyframes move-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.send-button {
-  @apply transition-all duration-200 ease-out;
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
 }
-.send-button:hover:not(:disabled) {
-  @apply scale-105 shadow-lg;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
-.send-button:active:not(:disabled) {
-  @apply scale-95 shadow-inner;
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-border/50 rounded-full;
 }
-
-.topic-chip {
-  @apply transition-all duration-200 ease-out;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/60;
 }
-.topic-chip:hover {
-  @apply shadow-lg transform -translate-y-0.5 bg-accent/20 dark:bg-accent/30;
-}
-
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-transparent;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-muted/40 rounded-full border-2 border-transparent;
-  background-clip: content-box;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted/70;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  @apply bg-muted/30;
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  @apply bg-muted/60;
-}
-
-* {
+.custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: hsl(
-      var(--muted-h),
-      var(--muted-s),
-      calc(var(--muted-l) + 10%)
-    )
-    transparent;
+  scrollbar-color: hsl(var(--border) / 0.5) transparent;
 }
 
-.dark * {
-  scrollbar-color: hsl(
-      var(--muted-h),
-      var(--muted-s),
-      calc(var(--muted-l) - 10%)
-    )
-    transparent;
+.input-glow:focus-visible {
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }

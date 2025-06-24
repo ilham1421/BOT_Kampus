@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
-// Varian animasi untuk efek stagger (elemen muncul satu per satu)
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -36,12 +35,10 @@ export default function Beranda() {
     navigate("/chatbot");
   };
 
-  const headerHeight = "88px"; // Tinggi header disesuaikan dengan padding py-5
+  const headerHeight = "88px"; 
 
   return (
-    // Latar belakang diubah menjadi putih bersih
     <div className="relative min-h-screen bg-white text-gray-800 font-sans overflow-x-hidden">
-      {/* Header dengan efek sticky dan frosted glass */}
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -68,13 +65,11 @@ export default function Beranda() {
         </Button>
       </motion.header>
 
-      {/* Konten Utama */}
       <main>
         <section
           className="grid grid-cols-1 lg:grid-cols-11 items-center gap-8 w-full"
           style={{ minHeight: `calc(100vh - ${headerHeight})` }}
         >
-          {/* Kolom Kiri: Konten Teks */}
           <motion.div
             className="flex flex-col items-start lg:col-span-5 px-6 sm:px-12 lg:px-0 lg:pl-24 py-12 lg:py-0"
             variants={containerVariants}
@@ -116,7 +111,6 @@ export default function Beranda() {
             </motion.div>
           </motion.div>
 
-          {/* Kolom Kanan: Ilustrasi */}
           <motion.div
             className="lg:col-span-6 h-full w-full flex items-center justify-center order-first lg:order-last"
             initial={{ scale: 0.9, opacity: 0 }}
@@ -132,7 +126,6 @@ export default function Beranda() {
         </section>
       </main>
 
-      {/* Tombol Chatbot yang Ditingkatkan */}
       <div className="fixed bottom-8 right-8 z-50">
         <div className="relative">
           <span className="absolute inset-0 -z-10 animate-ping-slow rounded-full bg-blue-500/50"></span>
